@@ -1,12 +1,13 @@
 <template>
   <div class="mx-6 mt-2 h-3/5">
     <GoogleMap
-      api-key="AIzaSyBopNQwD1RT2k9dLqH6WYPWIkMZF3RWXMQ"
+      api-key=GAPIKey
+			mapId=GMAPId
       style="width: 100%; height: 50vh"
       :center="center"
       :zoom="zoom"
     >
-      <Marker2
+      <AdvancedMarker
         v-for="restaurant in restaurants"
         :key="restaurant.id"
         :options="{
@@ -28,7 +29,7 @@
             </router-link>
           </div>
         </InfoWindow>
-      </Marker2>
+      </AdvancedMarker>
     </GoogleMap>
   </div>
 </template>
@@ -37,10 +38,10 @@
 import { defineComponent, ref } from "vue";
 import { RestaurantInfoData } from "@/models/RestaurantInfo";
 import { resizedProfileImage } from "@/utils/utils";
-import { GoogleMap, Marker as Marker2, InfoWindow } from "vue3-google-map";
+import { GoogleMap, AdvancedMarker , InfoWindow } from "vue3-google-map";
 
 export default defineComponent({
-  components: { GoogleMap, Marker2, InfoWindow },
+  components: { GoogleMap, AdvancedMarker, InfoWindow },
   props: {
     restaurants: {
       type: Array<RestaurantInfoData>,
